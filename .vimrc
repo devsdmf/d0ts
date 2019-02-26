@@ -20,7 +20,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'airblade/vim-gitgutter'
 
     " file finder (requires fzf installed)
-    Plug '/usr/local/opt/fzf'
+    Plug '$FZF_PATH'
     Plug 'junegunn/fzf.vim'
 
     " status line
