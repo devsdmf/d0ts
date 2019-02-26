@@ -1,5 +1,5 @@
 # path to zsh installation 
-export ZSH=/Users/devsdmf/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # setting up zsh theme
 ZSH_THEME="devsdmf"
