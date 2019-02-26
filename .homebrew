@@ -1,0 +1,15 @@
+
+# disable homebrew auto-update
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+# enable zsh-completions plugin
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# setting up homebrew php
+export HOMEBREW_PHP_PATH=$(brew --prefix php@7.1)
+export PATH="$HOMEBREW_PHP_PATH/bin:$PATH"
+export PATH="$HOMEBREW_PHP_PATH/sbin:$PATH"
+
+# setting up fzf
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
+

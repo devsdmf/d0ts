@@ -1,0 +1,5 @@
+
+# setting up nube script
+export NUBE_TIENDANUBE_ROOT=$HOME/Projects/tiendanube/tiendanube
+eval "$($HOME/.nube/bin/nube init -)"
+

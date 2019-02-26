@@ -14,3 +14,13 @@ else
   export EDITOR='vim'
 fi
 
+# setting up homebrew configuration
+if [[ -s $HOME/.homebrew ]]; then
+  source $HOME/.homebrew
+fi
+
+# setting up tiendanube configuration
+if [[ -s $HOME/.tiendanube ]]; then
+  source $HOME/.tiendanube
+fi
+
