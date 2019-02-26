@@ -1,0 +1,4 @@
+
+# setting up fzf
+export FZF_PATH="/usr/local/opt/fzf"
+
