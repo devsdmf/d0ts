@@ -14,6 +14,11 @@ else
   export EDITOR='vim'
 fi
 
+# setting up fzf
+if [[ -s $HOME/.fzf.conf ]]; then
+  source $HOME/.fzf.conf
+fi
+
 # setting up homebrew configuration
 if [[ -s $HOME/.homebrew ]]; then
   source $HOME/.homebrew
