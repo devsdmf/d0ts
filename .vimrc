@@ -43,6 +43,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
 
+    " git conflicts
+    Plug 'tpope/vim-fugitive'
+    Plug 'christoomey/vim-conflicted'
+
 call plug#end()
 " ####################### END PLUGIN MANAGEMENT
 
@@ -76,8 +80,7 @@ set autoread
 " ####################### END EDITOR SETTINGS
 
 " ####################### BEGIN KEYMAP SETTINGS
-" Ctrl + o => Open NERDtree viewer as a sidebar 
-map <C-o> :NERDTreeToggle<CR>
+
 
 " ; => Open the file search using fzf
 map ; :Files<CR>
@@ -127,6 +130,9 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let NERDTreeMapOpenInTab='\r'
 let NERDTreeShowHidden=1
 
+" Ctrl + o => Open NERDtree viewer as a sidebar 
+map <C-o> :NERDTreeToggle<CR>
+
 " nathanaelkane/vim-indent-guides 
 colorscheme default
 
@@ -144,5 +150,9 @@ let g:deoplete#enable_at_startup = 1
 
 " yggdroot/indentLine 
 let g:indentLine_setConceal = 0
+
+" christoomey/vim-conflicted
+let g:diffget_local_map = 'gl'
+let g:diffget_upstream_map = 'gu'
 " ####################### END PLUGINS SETTINGS
 
