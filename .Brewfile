@@ -20,6 +20,7 @@ brew "prettyping"
 brew "htop"
 brew "ncdu"
 brew "fzf"
+brew "the_silver_searcher"
 
 # development tools
 brew "gcc"
