@@ -43,14 +43,16 @@ call plug#begin('~/.vim/plugged')
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
 
-    " git conflicts
-    Plug 'tpope/vim-fugitive'
-    Plug 'christoomey/vim-conflicted'
+    " the silver search
+    Plug 'rking/ag.vim'
 
 call plug#end()
 " ####################### END PLUGIN MANAGEMENT
 
 " ####################### BEGIN EDITOR SETTINGS 
+" setting up default encoding
+:set encoding=utf-8
+
 " setting up line numbers
 :set nu
 
@@ -129,6 +131,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " scrooloose/nerdtree
 let NERDTreeMapOpenInTab='\r'
 let NERDTreeShowHidden=1
+let g:NERDTreeDirArrows=0
 
 " Ctrl + o => Open NERDtree viewer as a sidebar 
 map <C-o> :NERDTreeToggle<CR>
