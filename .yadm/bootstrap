@@ -15,6 +15,18 @@ if [ "$system_type" = "Darwin"  ]; then
     brew bundle --global
   fi
 
+  echo "Installing oh-my-zsh..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+  echo "Installing zsh theme..."
+  curl -0 https://raw.githubusercontent.com/devsdmf/zsh-theme/master/devsdmf.zsh-theme > $HOME/.oh-my-zsh/themes/devsdmf.zsh-theme
+
+  echo "Reverting .zshrc file..."
+  mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
+
+  echo "Reloading shell..."
+  exec zsh
+
 elif [ "$system_type" = "Linux" ]; then
   # install packages
   echo "Installing shell essentials..."

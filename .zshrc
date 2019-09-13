@@ -8,10 +8,7 @@ ZSH_THEME="devsdmf"
 export ZSH_TMUX_AUTOSTART=true
 
 # setting up zsh plugins
-plugins=(
-  git,
-  tmux
-)
+plugins=(git tmux)
 
 # starting up zsh
 source $ZSH/oh-my-zsh.sh

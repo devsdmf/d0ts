@@ -39,12 +39,19 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-markdown'
 
     " autocomplete
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " the silver search
     Plug 'rking/ag.vim'
+
+    " debugger
+    Plug 'vim-vdebug/vdebug'
+
+    " project-specific vimrc files
+    Plug 'embear/vim-localvimrc'
+
+    " syntax checker
+    Plug 'maralla/validator.vim'
 
 call plug#end()
 " ####################### END PLUGIN MANAGEMENT
@@ -109,8 +116,6 @@ map ; :Files<CR>
 :nnoremap <leader>4 :tabn 4<CR>
 :nnoremap <leader>5 :tabn 5<CR>
 
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " ####################### END KEYMAP SETTINGS
 
 " ####################### BEGIN CUSTOM COMMANDS
@@ -148,14 +153,42 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=251
 " itchyny/lightline
 set laststatus=2
 
-" Shougo/deoplete.nvim
-let g:deoplete#enable_at_startup = 1
-
 " yggdroot/indentLine 
 let g:indentLine_setConceal = 0
 
 " christoomey/vim-conflicted
 let g:diffget_local_map = 'gl'
 let g:diffget_upstream_map = 'gu'
+
+" embear/vim-localvimrc
+let g:localvimrc_sandbox = 0
+let g:localvimrc_persistent = 2
+
+" neoclide/coc.nvim
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 " ####################### END PLUGINS SETTINGS
 
