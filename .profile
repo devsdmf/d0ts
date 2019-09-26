@@ -4,6 +4,9 @@ if [[ -s $HOME/.aliases ]]; then
   source $HOME/.aliases
 fi
 
+# setting up locale
+export LC_ALL=en_US.UTF-8
+
 # setting up default ssh key
 export SSH_KEY_PATH="$HOME/.ssh/id_rsa"
 
