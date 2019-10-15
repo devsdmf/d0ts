@@ -27,3 +27,7 @@ if [[ -s $HOME/.homebrew ]]; then
   source $HOME/.homebrew
 fi
 
+if [[ -s $HOME/.nvm.conf ]]; then
+  source $HOME/.nvm.conf
+fi
+
