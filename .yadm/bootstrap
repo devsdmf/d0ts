@@ -15,17 +15,10 @@ if [ "$system_type" = "Darwin"  ]; then
     brew bundle --global
   fi
 
-  echo "Installing oh-my-zsh..."
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-  echo "Installing zsh theme..."
-  curl -0 https://raw.githubusercontent.com/devsdmf/zsh-theme/master/devsdmf.zsh-theme > $HOME/.oh-my-zsh/themes/devsdmf.zsh-theme
-
-  echo "Reverting .zshrc file..."
-  mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
-
-  echo "Reloading shell..."
-  exec zsh
+  install_oh_my_zsh
+  install_zsh_theme
+  revert_zsh_file
+  reload_zsh
 
 elif [ "$system_type" = "Linux" ]; then
   # install packages
@@ -33,9 +26,13 @@ elif [ "$system_type" = "Linux" ]; then
   sudo apt-get install -y zsh tmux coreutils openssl wget curl tree cmake dirmngr apt-transport-https ca-certificates gnupg2 software-properties-common # default tools
 
   echo "Installing essential tools..."
-  sudo apt-get install -y htop ncdu
-  sudo curl -0 https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping > /usr/local/bin/prettyping && sudo chmod +x /usr/local/bin/prettyping # prettyping
+  sudo apt-get install -y htop ncdu silversearcher-ag
+
+  download_and_install_binary https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping prettyping # prettyping
+download_and_install_binary https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy diff-so-fancy # diff-so-fancy
+
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
   echo "Installing development tools..."
   sudo apt-get install -y gcc llvm python python3
@@ -64,16 +61,34 @@ elif [ "$system_type" = "Linux" ]; then
   echo "Setting up zsh as default shell..."
   chsh -s $(which zsh)
 
-  echo "Installing oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  install_oh_my_zsh
+  install_zsh_theme
+  revert_zsh_file
+  reload_zsh
+fi
 
+function install_oh_my_zsh {
+  echo "Installing oh-my-zsh..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+}
+
+function install_zsh_theme {
   echo "Installing zsh theme..."
   curl -0 https://raw.githubusercontent.com/devsdmf/zsh-theme/master/devsdmf.zsh-theme > $HOME/.oh-my-zsh/themes/devsdmf.zsh-theme
+}
 
+function revert_zsh_file {
   echo "Reverting .zshrc file..."
   mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
+}
 
+function reload_zsh {
   echo "Reloading shell..."
   exec zsh
+}
 
-fi
+function download_and_install_binary {
+    echo "Downloading $2 ..."
+    curl -0 $1 > /tmp/$2
+    sudo mv /tmp/$2 /usr/local/bin/$2 && sudo chmod +x /usr/local/bin/$2
+}
