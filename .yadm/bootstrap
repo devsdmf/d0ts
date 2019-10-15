@@ -35,7 +35,7 @@ download_and_install_binary https://raw.githubusercontent.com/so-fancy/diff-so-f
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
   echo "Installing development tools..."
-  sudo apt-get install -y gcc llvm python python3
+  sudo apt-get install -y gcc llvm python python-pip python3 python3-pip
 
   # docker
   curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
