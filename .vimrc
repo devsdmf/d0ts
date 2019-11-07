@@ -19,6 +19,9 @@ call plug#begin('~/.vim/plugged')
     " show changed lines in a file on a git repository
     Plug 'airblade/vim-gitgutter'
 
+    " git integration
+    Plug 'tpope/vim-fugitive'
+
     " file finder (requires fzf installed)
     Plug '$FZF_PATH'
     Plug 'junegunn/fzf.vim'
@@ -115,6 +118,7 @@ map ; :Files<CR>
 :nnoremap <leader>3 :tabn 3<CR>
 :nnoremap <leader>4 :tabn 4<CR>
 :nnoremap <leader>5 :tabn 5<CR>
+:nnoremap <leader>T :tabedit %<CR>
 
 " ####################### END KEYMAP SETTINGS
 
@@ -141,6 +145,10 @@ let g:NERDTreeDirArrows=0
 " Ctrl + o => Open NERDtree viewer as a sidebar 
 map <C-o> :NERDTreeToggle<CR>
 
+" tpop/vim-fugitive
+:nnoremap <leader>gd :Gdiffsplit<CR>
+:nnoremap <leader>gb :Gblame<CR>
+
 " nathanaelkane/vim-indent-guides 
 colorscheme default
 
@@ -152,6 +160,16 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=251
 
 " itchyny/lightline
 set laststatus=2
+let g:lightline = {
+    \ 'colorscheme': 'darcula',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ]]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'fugitive#head'
+    \ }
+    \ }
 
 " yggdroot/indentLine 
 let g:indentLine_setConceal = 0
