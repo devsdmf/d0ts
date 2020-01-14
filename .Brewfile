@@ -1,6 +1,4 @@
 # initializing taps and support commands
-tap "caskroom/cask"
-tap "caskroom/versions"
 brew "mas"
 
 # shell essentials
