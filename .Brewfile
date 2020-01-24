@@ -25,7 +25,6 @@ brew "jq"
 # development tools
 brew "gcc"
 brew "llvm"
-brew "php@7.1"
 brew "node"
 brew "yarn"
 brew "python"
