@@ -16,11 +16,17 @@ call plug#begin('~/.vim/plugged')
     " tree viewer
     Plug 'scrooloose/nerdtree'
 
+    " nerdtree addon for git
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+
     " show changed lines in a file on a git repository
     Plug 'airblade/vim-gitgutter'
 
     " git integration
     Plug 'tpope/vim-fugitive'
+
+    " git conflict solver
+    Plug 'christoomey/vim-conflicted'
 
     " file finder (requires fzf installed)
     Plug '$FZF_PATH'
@@ -59,7 +65,26 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 " ####################### END PLUGIN MANAGEMENT
 
+" ####################### BEGIN PROPERTIES
+
+let default_indentation=4 " spaces
+
+" ####################### END PROPERTIES
+
+" ####################### USER FUNCTIONS
+
+" set indentation configs
+function! SetIndentation(spaces)
+  execute "set tabstop=".a:spaces
+  execute "set softtabstop=".a:spaces
+  execute "set shiftwidth=".a:spaces
+  execute "set expandtab"
+endfunction
+
+" ####################### END USER FUNCTIONS
+
 " ####################### BEGIN EDITOR SETTINGS 
+
 " setting up default encoding
 :set encoding=utf-8
 
@@ -71,14 +96,8 @@ if has("autocmd")
     filetype plugin indent on
 endif
 
-" show existing tab with 4 spaces width
-set tabstop=4
-
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-
-" on pressing tab, insert 4 spaces
-set expandtab
+" set tab settings to 4 spaces
+call SetIndentation(default_indentation)
 
 " setting up default split to right and bottom
 set splitbelow
@@ -89,10 +108,10 @@ set splitright
 
 " setting up vim to autoreload files when changed
 set autoread
+
 " ####################### END EDITOR SETTINGS
 
 " ####################### BEGIN KEYMAP SETTINGS
-
 
 " ; => Open the file search using fzf
 map ; :Files<CR>
@@ -123,6 +142,7 @@ map ; :Files<CR>
 " ####################### END KEYMAP SETTINGS
 
 " ####################### BEGIN CUSTOM COMMANDS
+
 " :Em => Enable mouse scroll navigation
 :command Em set mouse=a
 
@@ -134,13 +154,22 @@ map ; :Files<CR>
 
 " :WipeReg => clear vim registers
 :command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+
+" :I2 => Set indentation to 2 spaces
+:command I2 call SetIndentation(2)
+
+" :I4 => Set indentation to 4 spaces
+:command I4 call SetIndentation(4)
+
 " ####################### END CUSTOM COMMANDS
 
 " ####################### BEGIN PLUGINS SETTINGS 
+
 " scrooloose/nerdtree
 let NERDTreeMapOpenInTab='\r'
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrows=0
+let g:NERDTreeWinPos = "right"
 
 " Ctrl + o => Open NERDtree viewer as a sidebar 
 map <C-o> :NERDTreeToggle<CR>
@@ -177,6 +206,7 @@ let g:indentLine_setConceal = 0
 " christoomey/vim-conflicted
 let g:diffget_local_map = 'gl'
 let g:diffget_upstream_map = 'gu'
+:nnoremap <leader>nc :GitNextConflict<CR>
 
 " embear/vim-localvimrc
 let g:localvimrc_sandbox = 0
