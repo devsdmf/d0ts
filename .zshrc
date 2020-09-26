@@ -1,5 +1,6 @@
 # path to zsh installation 
 export ZSH=$HOME/.oh-my-zsh
+export ZSH_DISABLE_COMPFIX=true
 
 # setting up zsh theme
 ZSH_THEME="devsdmf"
