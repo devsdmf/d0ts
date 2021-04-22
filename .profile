@@ -30,4 +30,3 @@ fi
 if [[ -s $HOME/.nvm.conf ]]; then
   source $HOME/.nvm.conf
 fi
-
