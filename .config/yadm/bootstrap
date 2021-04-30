@@ -3,23 +3,7 @@
 system_type=$(uname -s)
 
 if [ "$system_type" = "Darwin"  ]; then
-
-  # install homebrew if it's missing
-  if ! command -v brew >/dev/null 2>&1; then
-    echo "Installing homebrew"
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  fi
-
-  if [ -f "$HOME/.Brewfile"  ]; then
-    echo "Updating homebrew bundle"
-    brew bundle --global
-  fi
-
-  install_oh_my_zsh
-  install_zsh_theme
-  revert_zsh_file
-  reload_zsh
-
+  /bin/bash $HOME/.config/yadm/macos-setup
 elif [ "$system_type" = "Linux" ]; then
   # install packages
   echo "Installing shell essentials..."

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if ! command -v brew > /dev/null 2>&1; then
+    echo "Installing homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    echo "Homebrew already installed!"
+fi
+
+#if [ -f "$HOME/.Brewfile" ]; then
+#    echo "Installing homebrew packages using Brewfile"
+#    brew bundle --global
+#fi
+
+echo "Installing oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "Installing zsh theme"
+curl -0 https://raw.githubusercontent.com/devsdmf/zsh-theme/master/devsdmf.zsh-theme > $HOME/.oh-my-zsh/themes/devsdmf.zsh-theme
+
+echo "Reverting .zshrc file"
+mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
+
+echo "Installation finished, restart the terminal emulator!"

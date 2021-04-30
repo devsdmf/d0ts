@@ -11,7 +11,6 @@ brew "wget"
 brew "curl"
 brew "tree"
 brew "cmake"
-brew "yadm"
 
 # tools
 brew "prettyping"
@@ -35,13 +34,9 @@ brew "maven"
 brew "scala"
 brew "sbt"
 cask "sequel-pro"
+cask "docker"
 
 # editors
 brew "vim"
 cask "visual-studio-code"
 mas "Xcode", id: 497799835
-
-# system essentials
-cask "iterm2"
-cask "docker"
-
