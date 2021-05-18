@@ -44,6 +44,9 @@ call plug#begin('~/.vim/plugged')
     " tmux navigation plugin
     Plug 'christoomey/vim-tmux-navigator'
 
+    " polyglot
+    Plug 'sheerun/vim-polyglot'
+
     " markdown
     Plug 'tpope/vim-markdown'
 
@@ -108,6 +111,9 @@ set splitright
 
 " setting up vim to autoreload files when changed
 set autoread
+
+" polyglot compat
+set nocompatible
 
 " ####################### END EDITOR SETTINGS
 
