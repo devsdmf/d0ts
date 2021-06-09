@@ -7,10 +7,10 @@ else
     echo "Homebrew already installed!"
 fi
 
-#if [ -f "$HOME/.Brewfile" ]; then
-#    echo "Installing homebrew packages using Brewfile"
-#    brew bundle --global
-#fi
+if [ -f "$HOME/.Brewfile" ]; then
+    echo "Installing homebrew packages using Brewfile"
+    brew bundle --global
+fi
 
 echo "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
