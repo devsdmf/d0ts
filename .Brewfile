@@ -24,7 +24,7 @@ brew "jq"
 # development tools
 brew "gcc"
 brew "llvm"
-brew "node"
+brew "n"
 brew "yarn"
 brew "python"
 brew "python3"
