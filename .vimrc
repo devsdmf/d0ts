@@ -70,7 +70,7 @@ call plug#end()
 
 " ####################### BEGIN PROPERTIES
 
-let default_indentation=4 " spaces
+let default_indentation=2 " spaces
 
 " ####################### END PROPERTIES
 
