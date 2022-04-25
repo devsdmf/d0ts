@@ -26,3 +26,8 @@ fi
 if [[ -s $HOME/.homebrew ]]; then
   source $HOME/.homebrew
 fi
+
+# setting up local configuration
+if [[ -s $HOME/.profile.local ]]; then
+  source $HOME/.profile.local
+fi

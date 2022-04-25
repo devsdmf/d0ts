@@ -65,6 +65,9 @@ call plug#begin('~/.vim/plugged')
     " syntax checker
     Plug 'maralla/validator.vim'
 
+    " http client
+    Plug 'nicwest/vim-http'
+
 call plug#end()
 " ####################### END PLUGIN MANAGEMENT
 
@@ -127,6 +130,7 @@ map ; :Files<CR>
 
 " close current window/tab
 :nnoremap <leader>q :close<CR>
+:nnoremap <leader>Q :q!<CR>
 
 " save current file
 :nnoremap <leader>s :w<CR>
