@@ -28,7 +28,7 @@ brew "n"
 brew "yarn"
 brew "python"
 brew "python3"
-cask "adoptopenjdk/openjdk/adoptopenjdk8"
+brew "openjdk@17"
 brew "ant"
 brew "maven"
 brew "scala"
@@ -39,4 +39,3 @@ cask "docker"
 # editors
 brew "vim"
 cask "visual-studio-code"
-mas "Xcode", id: 497799835
