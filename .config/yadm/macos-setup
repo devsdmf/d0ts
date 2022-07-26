@@ -12,6 +12,15 @@ if [ -f "$HOME/.Brewfile" ]; then
     brew bundle --global
 fi
 
+echo "Installing tmux plugin manager"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+echo "Refreshing tmux environment"
+tmux source ~/.tmux.conf
+
+echo "Installing tmux plugins"
+sh .tmux/plugins/tpm/bin/install_plugins
+
 echo "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
