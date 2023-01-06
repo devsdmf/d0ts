@@ -21,6 +21,11 @@ brew "the_silver_searcher"
 brew "diff-so-fancy"
 brew "jq"
 
+# security key requirements
+brew "openssh"
+brew "libfido2"
+brew "gnupg"
+
 # development tools
 brew "gcc"
 brew "llvm"
