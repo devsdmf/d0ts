@@ -29,7 +29,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'christoomey/vim-conflicted'
 
     " file finder (requires fzf installed)
-    Plug '$FZF_PATH'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
 
     " status line
@@ -53,9 +53,6 @@ call plug#begin('~/.vim/plugged')
     " autocomplete
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    " the silver search
-    Plug 'rking/ag.vim'
-
     " debugger
     Plug 'vim-vdebug/vdebug'
 
@@ -66,7 +63,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'maralla/validator.vim'
 
     " http client
-    Plug 'nicwest/vim-http'
+    Plug 'aquach/vim-http-client'
 
 call plug#end()
 " ####################### END PLUGIN MANAGEMENT

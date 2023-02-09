@@ -17,7 +17,6 @@ brew "prettyping"
 brew "htop"
 brew "ncdu"
 brew "fzf"
-brew "the_silver_searcher"
 brew "diff-so-fancy"
 brew "jq"
 
@@ -38,9 +37,7 @@ brew "ant"
 brew "maven"
 brew "scala"
 brew "sbt"
-cask "sequel-pro"
 cask "docker"
 
 # editors
 brew "vim"
-cask "visual-studio-code"
