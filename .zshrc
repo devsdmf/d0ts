@@ -1,3 +1,5 @@
+# Amazon Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 # running profile
 if [[ -s $HOME/.profile ]]; then
   source $HOME/.profile
@@ -18,5 +20,3 @@ plugins=(git tmux)
 
 # starting up zsh
 source $ZSH/oh-my-zsh.sh
-
-

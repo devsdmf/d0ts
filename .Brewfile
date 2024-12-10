@@ -11,6 +11,8 @@ brew "wget"
 brew "curl"
 brew "tree"
 brew "cmake"
+brew "make"
+brew "texinfo"
 
 # tools
 brew "prettyping"
@@ -30,13 +32,10 @@ brew "gcc"
 brew "llvm"
 brew "n"
 brew "yarn"
-brew "python"
 brew "python3"
 brew "openjdk@17"
 brew "ant"
 brew "maven"
-brew "scala"
-brew "sbt"
 cask "docker"
 
 # editors
