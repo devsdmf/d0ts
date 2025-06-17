@@ -13,6 +13,9 @@ brew "tree"
 brew "cmake"
 brew "make"
 brew "texinfo"
+brew "ninja"
+brew "gettext"
+brew "vim"
 
 # tools
 brew "prettyping"
@@ -32,11 +35,14 @@ brew "gcc"
 brew "llvm"
 brew "n"
 brew "yarn"
+brew "php"
 brew "python3"
 brew "openjdk@17"
 brew "ant"
 brew "maven"
 cask "docker"
 
-# editors
-brew "vim"
+# neovim dependencies
+brew "fd"
+brew "ripgrep"
+brew "tree-sitter"
