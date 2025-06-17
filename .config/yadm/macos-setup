@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Installing xcode command line tools..."
+xcode-select --install
+
 if ! command -v brew > /dev/null 2>&1; then
     echo "Installing homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -11,6 +14,18 @@ if [ -f "$HOME/.Brewfile" ]; then
     echo "Installing homebrew packages using Brewfile"
     brew bundle --global
 fi
+
+echo "Installing terminal fonts..."
+mkdir /tmp/terminus-font && cp $HOME/.config/yadm/resources/terminus-font.zip /tmp/terminus-font/terminus-font.zip
+cd /tmp/terminus-font && unzip Terminus.zip && mv *.ttf ~/Library/Fonts/
+
+echo "Installing neovim..."
+git clone https://github.com/neovim/neovim /tmp/neovim && cd /tmp/neovim
+git checkout stable
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+mkdir ~/.config/nvim/
+mkdir ~/.local/share/nvim
 
 echo "Installing tmux plugin manager"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
